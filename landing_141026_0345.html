@@ -1,0 +1,324 @@
+---
+permalink: /index.html
+layout: null
+---
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>bamix / ESGE AG | Woher der Wert kommt und wo der grösste Hebel liegt</title>
+<meta name="description" content="Strategiedeck zu bamix (ESGE AG): Geschäftsmodell, Wettbewerb, Portfolio und Wachstumsoptionen auf Basis öffentlicher Quellen. 39 Folien, Stand 14. Oktober 2026.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #ffffff;
+    --paper-2: #f5f5f3;
+    --ink: #1b1d21;
+    --ink-2: #4a4e57;
+    --ink-3: #7a7f88;
+    --hairline: #d9dbe0;
+    --accent: #2b4a7a;
+    --accent-2: #8a4a2e;
+    --serif: 'Source Serif 4', Georgia, serif;
+    --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  }
+  @supports (color: oklch(40% 0.11 255)) {
+    :root { --accent: oklch(40% 0.11 255); --accent-2: oklch(46% 0.11 35); }
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--paper); color: var(--ink); min-height: 100vh; -webkit-font-smoothing: antialiased; }
+
+  /* Hero */
+  .hero { max-width: 1200px; margin: 0 auto; padding: 72px 40px 48px; border-bottom: 1px solid var(--hairline); }
+  .hero-mark { width: 32px; height: 3px; background: var(--accent-2); margin-bottom: 20px; }
+  .hero-tag { font-size: 11px; font-weight: 600; letter-spacing: 1.6px; text-transform: uppercase; color: var(--ink-3); margin-bottom: 18px; }
+  .hero h1 { font-family: var(--serif); font-weight: 600; font-size: 40px; line-height: 1.18; max-width: 920px; margin-bottom: 14px; }
+  .hero h1 span { color: var(--accent); }
+  .hero-subtitle { font-size: 17px; line-height: 1.6; color: var(--ink-2); max-width: 760px; margin-bottom: 28px; }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px; }
+  .btn { display: inline-block; font-family: var(--sans); font-size: 14px; font-weight: 500; padding: 11px 18px; border-radius: 3px; text-decoration: none; cursor: pointer; border: 1px solid var(--accent); transition: all 0.15s; }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { background: #1f3860; }
+  .btn-secondary { background: transparent; color: var(--accent); }
+  .btn-secondary:hover { background: var(--paper-2); }
+  .hero-meta { display: flex; gap: 36px; flex-wrap: wrap; }
+  .meta-item { display: flex; flex-direction: column; gap: 4px; }
+  .meta-label { font-size: 10px; font-weight: 600; letter-spacing: 1.4px; text-transform: uppercase; color: var(--ink-3); }
+  .meta-value { font-size: 14px; color: var(--ink-2); }
+
+  /* Navigation */
+  .nav-bar { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.94); backdrop-filter: blur(10px); border-bottom: 1px solid var(--hairline); padding: 0 40px; }
+  .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; gap: 0; overflow-x: auto; }
+  .nav-tab { padding: 15px 18px; font-size: 13px; font-weight: 500; color: var(--ink-3); cursor: pointer; border-bottom: 3px solid transparent; white-space: nowrap; user-select: none; transition: color 0.15s; }
+  .nav-tab:hover { color: var(--ink); }
+  .nav-tab.active { color: var(--ink); border-bottom-color: var(--accent-2); }
+
+  /* Content */
+  .content { max-width: 1200px; margin: 0 auto; padding: 40px; }
+  .chapter { margin-bottom: 56px; scroll-margin-top: 64px; }
+  .chapter-header { display: flex; align-items: baseline; gap: 14px; margin-bottom: 8px; padding-bottom: 12px; border-bottom: 1px solid var(--hairline); }
+  .chapter-number { font-size: 11px; font-weight: 600; letter-spacing: 1.4px; text-transform: uppercase; color: #fff; background: var(--accent); padding: 5px 10px; border-radius: 3px; white-space: nowrap; }
+  .chapter-number.anhang { background: var(--ink-3); }
+  .chapter-title { font-family: var(--serif); font-weight: 600; font-size: 24px; }
+  .chapter-desc { font-size: 15px; color: var(--ink-2); line-height: 1.6; margin: 10px 0 22px; }
+
+  .slides-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+  .slide-card { background: var(--paper); border: 1px solid var(--hairline); border-radius: 4px; overflow: hidden; cursor: pointer; transition: all 0.2s; display: block; text-decoration: none; color: inherit; }
+  .slide-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 22px rgba(27,29,33,0.10); }
+  .slide-preview { width: 100%; aspect-ratio: 16/9; background: var(--paper-2); overflow: hidden; border-bottom: 1px solid var(--hairline); }
+  .slide-preview img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .slide-info { padding: 14px 16px 16px; }
+  .slide-number { font-size: 10px; font-weight: 600; letter-spacing: 1.4px; text-transform: uppercase; color: var(--ink-3); margin-bottom: 6px; }
+  .slide-title { font-size: 14px; font-weight: 500; line-height: 1.45; color: var(--ink); }
+  .slide-card.divider .slide-title { font-family: var(--serif); font-weight: 600; font-size: 17px; }
+  .slide-q { font-size: 13px; color: var(--ink-2); line-height: 1.5; margin-top: 4px; }
+
+  /* Viewer */
+  .viewer-overlay { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(27,29,33,0.94); flex-direction: column; align-items: center; justify-content: center; }
+  .viewer-overlay.active { display: flex; }
+  .viewer-controls { display: flex; align-items: center; gap: 12px; padding: 10px 16px; background: rgba(255,255,255,0.08); border-radius: 4px; margin-bottom: 12px; }
+  .viewer-btn { background: transparent; border: 1px solid #777; color: #eee; padding: 7px 14px; border-radius: 3px; cursor: pointer; font-family: var(--sans); font-size: 13px; transition: all 0.15s; }
+  .viewer-btn:hover { border-color: #fff; color: #fff; }
+  .viewer-title { font-size: 13px; color: #ccc; min-width: 200px; text-align: center; }
+  .viewer-frame { width: 92vw; max-width: 1400px; aspect-ratio: 16/9.3; border: none; border-radius: 3px; background: #fff; }
+  .viewer-hint { margin-top: 10px; font-size: 12px; color: #999; }
+
+  /* Footer */
+  .footer { border-top: 1px solid var(--hairline); padding: 36px 40px; text-align: center; color: var(--ink-3); font-size: 12px; line-height: 1.7; }
+  .footer a { color: var(--accent); text-decoration: none; }
+
+  @media (max-width: 768px) {
+    .hero { padding: 40px 20px 28px; }
+    .hero h1 { font-size: 28px; }
+    .content { padding: 20px; }
+    .slides-grid { grid-template-columns: 1fr; }
+    .nav-bar { padding: 0 8px; }
+    .nav-tab { padding: 12px 12px; font-size: 12px; }
+    .viewer-frame { width: 98vw; }
+  }
+</style>
+<script data-goatcounter="https://msc-ai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-mark"></div>
+  <div class="hero-tag">ESGE AG · bamix of Switzerland · Strategiedeck</div>
+  <h1><span>bamix:</span> Woher der Wert kommt und wo der grösste Hebel liegt</h1>
+  <p class="hero-subtitle">Geschäftsmodell, Wettbewerb, Portfolio und Wachstumsoptionen, analysiert auf Basis öffentlicher Quellen. Alle Zahlen gegen die Originalquelle geprüft, Quellenverzeichnis im Anhang. Eigene Vorschläge sind als solche gekennzeichnet.</p>
+  <div class="hero-actions">
+    <a class="btn btn-primary" href="deck/bamix_deck.html" target="_blank" rel="noopener">Deck öffnen</a>
+    <a class="btn btn-secondary" onclick="openViewer(1)">Executive Summary</a>
+  </div>
+  <div class="hero-meta">
+    <div class="meta-item"><span class="meta-label">Autor</span><span class="meta-value">Marcelo Caballero</span></div>
+    <div class="meta-item"><span class="meta-label">Adressat</span><span class="meta-value">ESGE AG, bamix of Switzerland</span></div>
+    <div class="meta-item"><span class="meta-label">Stand</span><span class="meta-value">14. Oktober 2026</span></div>
+    <div class="meta-item"><span class="meta-label">Umfang</span><span class="meta-value">39 Folien</span></div>
+  </div>
+</div>
+
+<nav class="nav-bar">
+  <div class="nav-inner" id="nav-inner"></div>
+</nav>
+
+<div class="viewer-overlay" id="viewer">
+  <div class="viewer-controls">
+    <button class="viewer-btn" onclick="navigateSlide(-1)">&#9664; Zurück</button>
+    <span class="viewer-title" id="viewer-title"></span>
+    <button class="viewer-btn" onclick="navigateSlide(1)">Weiter &#9654;</button>
+    <button class="viewer-btn" onclick="closeViewer()">&#10005; Schliessen</button>
+  </div>
+  <iframe class="viewer-frame" id="viewer-frame" title="Deck"></iframe>
+  <div class="viewer-hint">Pfeiltasten blättern, Escape schliesst. Im Deck selbst: Klick rechts weiter, Klick links zurück.</div>
+</div>
+
+<div class="content" id="content"></div>
+
+<footer class="footer">
+  <p>Marcelo Caballero · Strategiedeck bamix / ESGE AG · Oktober 2026</p>
+  <p>Alle Zahlen gegen die Originalquelle geprüft, Quellenverzeichnis auf den Folien 37 bis 39. Keine internen oder vertraulichen Daten.</p>
+</footer>
+
+<script>
+  var DECK = 'deck/bamix_deck.html';
+
+  var chapters = [
+    { id: 'ch-einstieg', num: 'Einstieg', title: 'Titel, Executive Summary, Aufbau', desc: 'Die Antwort zuerst: das Produkt ist seinen Preis wert, bamix nimmt davon zu wenig ein, und die Reihenfolge der Abhilfe ist eindeutig.' },
+    { id: 'ch-a', num: 'Teil A', title: 'Ausgangslage', desc: 'Wofür bezahlen Kunden, und wie ist das Geschäft aufgestellt? Herkunft und Fertigung, Vertrieb und Partner, das Wertversprechen, der Erlösmechanismus.' },
+    { id: 'ch-b', num: 'Teil B', title: 'Markt und Wettbewerb', desc: 'Wer greift bamix an, und womit? Preisposition, unabhängige Tests, die fünf Hauptwettbewerber, vier Stellen, an denen der Vorsprung schmilzt.' },
+    { id: 'ch-c', num: 'Teil C', title: 'Portfolio und Roadmap', desc: 'Was fehlt dem Produkt, und was kommt als Nächstes? Eine Plattform, drei Linien, Kabel und Cordless, Lücken im Sechservergleich, Roadmap, Stop-Go je Stufe.' },
+    { id: 'ch-d', num: 'Teil D', title: 'Wachstum', desc: 'Wo liegt der Hebel, und in welcher Reihenfolge? Engpass, Preisunterschiede zwischen den Ländern, Vermarktungshebel, Produkthebel und Wetten, Reihenfolge, der Gastrokanal.' },
+    { id: 'ch-e', num: 'Teil E', title: 'Fazit und nächste Schritte', desc: 'Was folgt aus den Befunden, und was passiert in 90 Tagen? Fazit, zehn Fragen an das Unternehmen, 90 Tage mit zwei umkehrbaren Piloten.' },
+    { id: 'ch-anhang', num: 'Anhang', title: 'Rechnungen und Quellen', desc: 'Woher stammt jede Zahl? Preisrechnung, Portfolio, Kompatibilität, Schutzrechte, Lebenszyklus, 32 Originalquellen.', anhang: true }
+  ];
+
+  var slides = [
+    { n: 1, ch: 0, label: 'Folie 1 · Titel', title: 'Woher der Wert kommt und wo der grösste Hebel liegt', q: 'Geschäftsmodell, Wettbewerb, Portfolio und Wachstumsoptionen, analysiert auf Basis öffentlicher Quellen' },
+    { n: 2, ch: 0, label: 'Folie 2 · Executive Summary', title: 'Das Produkt ist seinen Preis wert, bamix nimmt davon zu wenig ein, und die Reihenfolge der Abhilfe ist eindeutig' },
+    { n: 3, ch: 0, label: 'Folie 3 · Aufbau', title: 'Fünf Teile, fünf Leitfragen, je ein Befund und eine Konsequenz: die Argumentation auf einer Seite' },
+    { n: 4, ch: 1, label: 'Folie 4 · Trenner', title: 'Teil A: Ausgangslage', q: 'Wofür bezahlen Kunden, und wie ist das Geschäft aufgestellt?', divider: true },
+    { n: 5, ch: 1, label: 'Folie 5', title: 'Seit über 70 Jahren baut bamix ein einziges Produkt an einem Standort, der Schutz kommt heute von der Marke und der Fertigung, nicht mehr vom Patent' },
+    { n: 6, ch: 1, label: 'Folie 6', title: 'Acht bis neun von zehn Geräten gehen ins Ausland, Deutschland ist der wichtigste Markt und läuft über den Partner Unold' },
+    { n: 7, ch: 1, label: 'Folie 7', title: 'Der Wert von bamix ist ein System aus Garantie, Reparatur und Zubehör, und die Garantiefallquote belegt, dass das Versprechen hält' },
+    { n: 8, ch: 1, label: 'Folie 8', title: 'Langlebigkeit verschiebt die Erlöse vom Ersatzkauf zur Nutzung, das Geschäft lebt von Zubehör, Teilen und weiteren Haushalten, nicht vom Wiederkauf' },
+    { n: 9, ch: 2, label: 'Folie 9 · Trenner', title: 'Teil B: Markt und Wettbewerb', q: 'Wer greift bamix an, und womit?', divider: true },
+    { n: 10, ch: 2, label: 'Folie 10', title: 'Beim selben Händler kostet bamix das Doppelte eines Braun und das Anderthalbfache eines Bosch, der Aufpreis muss im Regal begründet werden' },
+    { n: 11, ch: 2, label: 'Folie 11', title: 'Unabhängige Tests bestätigen die Langlebigkeit von bamix, bei der Mixleistung liegt das Gerät im Mittelfeld oder dahinter' },
+    { n: 12, ch: 2, label: 'Folie 12', title: 'Fünf Marken bestimmen das Umfeld, jede greift bamix an einer anderen Stelle an' },
+    { n: 13, ch: 2, label: 'Folie 13', title: 'Der Vorsprung schmilzt an vier Stellen: Haltbarkeitsversprechen, Testurteil, Preisdisziplin, Kundendaten. Zwei sind Produkt, zwei sind Vermarktung' },
+    { n: 14, ch: 3, label: 'Folie 14 · Trenner', title: 'Teil C: Portfolio und Roadmap', q: 'Was fehlt dem Produkt, und was kommt als Nächstes?', divider: true },
+    { n: 15, ch: 3, label: 'Folie 15', title: 'Das Portfolio ruht auf einer Plattform mit drei Linien, Cordless ist seit 2022 am Markt und macht erst rund fünf Prozent der Verkäufe aus' },
+    { n: 16, ch: 3, label: 'Folie 16', title: 'Kabel und Cordless tragen zwei verschiedene Versprechen, «lebenslang» gilt nur für den Motor der Netzgeräte und muss so kommuniziert werden' },
+    { n: 17, ch: 3, label: 'Folie 17', title: 'Im direkten Vergleich führt bamix bei Herkunft, Garantie und Langlebigkeit und liegt zurück bei Drehzahl, Fuss, Klinge und Erklärung am Regal' },
+    { n: 18, ch: 3, label: 'Folie 18', title: 'Die Roadmap setzt auf Langlebigkeit statt auf Wattzahlen, jede weitere Stufe wird erst nach einem klaren Nachweis freigegeben' },
+    { n: 19, ch: 3, label: 'Folie 19', title: 'Stop-Go je Stufe: vorhandene Teile, Prototyp, Plattform nur bei positivem Fall, und zwei Anker, die jede Stufe erhalten muss' },
+    { n: 20, ch: 4, label: 'Folie 20 · Trenner', title: 'Teil D: Wachstum', q: 'Wo liegt der Hebel, und in welcher Reihenfolge?', divider: true },
+    { n: 21, ch: 4, label: 'Folie 21', title: 'Der Engpass liegt nicht im Produkt, sondern in der Steuerung der Partner und in der Datenlage zum Endkunden' },
+    { n: 22, ch: 4, label: 'Folie 22', title: 'Dasselbe Gerät kostet netto in Deutschland 38 Prozent weniger als in der Schweiz, beim Cordless ist es umgekehrt, die Länderpreise folgen keiner erkennbaren Architektur' },
+    { n: 23, ch: 4, label: 'Folie 23', title: 'Vier Vermarktungshebel brauchen keine Entwicklung: Erklärung am Verkaufspunkt, Partner-Scorecard, Preiskorridor, Faktenbasis Deutschland' },
+    { n: 24, ch: 4, label: 'Folie 24', title: 'Drei Produkthebel schliessen die belegten Lücken und brauchen Entwicklung, zwei strukturelle Wetten kommen erst nach Freigabe' },
+    { n: 25, ch: 4, label: 'Folie 25', title: 'Die Reihenfolge vom Einfachsten zum Schwierigsten: erklären und messen, dann Preis und Partner, dann Produkt, zuletzt Plattform und Direktkanal' },
+    { n: 26, ch: 4, label: 'Folie 26', title: 'Die Gastronomie trägt ein Fünftel des Absatzes und ist seit 1991 bedient, ein eigenes Servicemodell würde den Kanal vom Produktverkauf zur Partnerschaft machen' },
+    { n: 27, ch: 5, label: 'Folie 27 · Trenner', title: 'Teil E: Fazit und nächste Schritte', q: 'Was folgt aus den Befunden, und was passiert in 90 Tagen?', divider: true },
+    { n: 28, ch: 5, label: 'Folie 28 · Fazit', title: 'Das Produkt ist seinen Preis wert, der Vorsprung schmilzt an vier Stellen, und die ersten drei Schritte holen Ertrag ohne Entwicklung' },
+    { n: 29, ch: 5, label: 'Folie 29', title: 'Zehn Fragen entscheiden, welche Hebel tatsächlich tragen, keine davon ist mit öffentlichen Quellen zu beantworten' },
+    { n: 30, ch: 5, label: 'Folie 30', title: 'In 90 Tagen entsteht die Faktenbasis, danach laufen zwei Piloten, die sich jederzeit zurücknehmen lassen' },
+    { n: 31, ch: 6, label: 'Folie 31 · Trenner', title: 'Anhang: Rechnungen und Quellen', q: 'Woher stammt jede Zahl?', divider: true },
+    { n: 32, ch: 6, label: 'Anhang A1', title: 'Preisrechnung: Bruttopreise, Mehrwertsteuer und Umrechnung hinter den Faktoren in Teil B und D' },
+    { n: 33, ch: 6, label: 'Anhang A2', title: 'Portfolio: eine Plattform von 140 bis 300 Watt, drei Cordless, drei Gastro, und in Deutschland andere Namen für dieselben Geräte' },
+    { n: 34, ch: 6, label: 'Anhang A3', title: 'Kompatibilität: Zubehör passt auf alle Linien mit zwei belegten Ausnahmen, MAXX und Cordless' },
+    { n: 35, ch: 6, label: 'Anhang A4', title: 'Schutzrechte und Herkunft: Die Ursprungspatente sind abgelaufen, der Schutz kommt heute aus Swissness, Marke und Fertigung' },
+    { n: 36, ch: 6, label: 'Anhang A5', title: 'Lebenszykluskosten: Die Garantie beschreibt den Umfang, ob sie Kosten senkt, muss gemessen werden' },
+    { n: 37, ch: 6, label: 'Anhang A6', title: 'Quellenverzeichnis 1 von 3: Unternehmen und Vertrieb' },
+    { n: 38, ch: 6, label: 'Anhang A7', title: 'Quellenverzeichnis 2 von 3: Geschichte, Technik, Tests' },
+    { n: 39, ch: 6, label: 'Anhang A8', title: 'Quellenverzeichnis 3 von 3: Preise, Wettbewerber, Recht' }
+  ];
+
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+
+  function build() {
+    var nav = document.getElementById('nav-inner');
+    var content = document.getElementById('content');
+    chapters.forEach(function (c, ci) {
+      var tab = document.createElement('div');
+      tab.className = 'nav-tab' + (ci === 0 ? ' active' : '');
+      tab.textContent = c.num === 'Einstieg' || c.num === 'Anhang' ? c.num : c.num.replace('Teil ', '') + ' · ' + c.title;
+      tab.onclick = function () { scrollToChapter(c.id, ci); };
+      nav.appendChild(tab);
+
+      var sec = document.createElement('div');
+      sec.className = 'chapter';
+      sec.id = c.id;
+      var head = '<div class="chapter-header"><span class="chapter-number' + (c.anhang ? ' anhang' : '') + '">' + c.num + '</span><span class="chapter-title">' + c.title + '</span></div>';
+      head += '<p class="chapter-desc">' + c.desc + '</p>';
+      sec.innerHTML = head;
+      var grid = document.createElement('div');
+      grid.className = 'slides-grid';
+      slides.filter(function (s) { return s.ch === ci; }).forEach(function (s) {
+        var card = document.createElement('a');
+        card.className = 'slide-card' + (s.divider ? ' divider' : '');
+        card.onclick = function () { openViewer(s.n - 1); };
+        var html = '<div class="slide-preview"><img loading="lazy" src="thumbs/s' + pad(s.n) + '.png" alt="Folie ' + s.n + '"></div>';
+        html += '<div class="slide-info"><div class="slide-number">' + s.label + '</div><div class="slide-title">' + s.title + '</div>';
+        if (s.q) html += '<div class="slide-q">' + s.q + '</div>';
+        html += '</div>';
+        card.innerHTML = html;
+        grid.appendChild(card);
+      });
+      sec.appendChild(grid);
+      content.appendChild(sec);
+    });
+  }
+
+  var currentSlide = 0;
+  var frame, viewer, titleEl;
+
+  function setTitle() {
+    titleEl.textContent = (currentSlide + 1) + ' / ' + slides.length + '  |  ' + slides[currentSlide].label;
+  }
+
+  function openViewer(index) {
+    currentSlide = Math.max(0, Math.min(slides.length - 1, index));
+    frame.src = DECK + '#f' + (currentSlide + 1);
+    setTitle();
+    viewer.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeViewer() {
+    viewer.classList.remove('active');
+    frame.src = 'about:blank';
+    document.body.style.overflow = '';
+  }
+
+  function navigateSlide(delta) {
+    var next = currentSlide + delta;
+    if (next < 0 || next >= slides.length) return;
+    currentSlide = next;
+    setTitle();
+    var done = false;
+    try {
+      var w = frame.contentWindow;
+      var ev = new w.KeyboardEvent('keydown', { key: delta > 0 ? 'ArrowRight' : 'ArrowLeft', bubbles: true, cancelable: true });
+      w.document.dispatchEvent(ev);
+      done = true;
+    } catch (e) { done = false; }
+    if (!done) {
+      frame.src = 'about:blank';
+      setTimeout(function () { frame.src = DECK + '#f' + (currentSlide + 1); }, 30);
+    }
+  }
+
+  function syncFromFrame() {
+    try {
+      var h = frame.contentWindow.location.hash || '';
+      var n = parseInt(h.replace('#f', ''), 10);
+      if (!isNaN(n) && n >= 1 && n <= slides.length && n - 1 !== currentSlide) { currentSlide = n - 1; setTitle(); }
+    } catch (e) {}
+  }
+
+  function scrollToChapter(id, idx) {
+    var el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    var tabs = document.querySelectorAll('.nav-tab');
+    for (var i = 0; i < tabs.length; i++) tabs[i].classList.toggle('active', i === idx);
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    build();
+    frame = document.getElementById('viewer-frame');
+    viewer = document.getElementById('viewer');
+    titleEl = document.getElementById('viewer-title');
+    frame.addEventListener('load', function () {
+      try { frame.contentWindow.addEventListener('hashchange', syncFromFrame); } catch (e) {}
+    });
+    setInterval(function () { if (viewer.classList.contains('active')) syncFromFrame(); }, 500);
+
+    document.addEventListener('keydown', function (e) {
+      if (!viewer.classList.contains('active')) return;
+      if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); navigateSlide(1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); navigateSlide(-1); }
+      if (e.key === 'Escape') closeViewer();
+    });
+
+    var ids = chapters.map(function (c) { return c.id; });
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var idx = ids.indexOf(entry.target.id);
+          var tabs = document.querySelectorAll('.nav-tab');
+          for (var i = 0; i < tabs.length; i++) tabs[i].classList.toggle('active', i === idx);
+        }
+      });
+    }, { threshold: 0.3 });
+    ids.forEach(function (id) { var el = document.getElementById(id); if (el) observer.observe(el); });
+  });
+</script>
+</body>
+</html>
